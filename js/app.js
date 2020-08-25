@@ -50,7 +50,7 @@ function showNotes() {
     }
     let html = "";
     notesObj.forEach(function (element, index) {
-        console.log(element[0]);
+       
         //Then Html e Cart add bkre daw(html + mane append hotei thakbe item add krar sathe sathe)
         html +=
             //function call kra hoise 56 no line e and this.id is index count for each index and id o dibo $index
@@ -114,9 +114,10 @@ searchTxt.addEventListener("input",function(){
         //now we need content from p tag first element Oi element
  
          let cardtxt = element.getElementsByTagName("p")[0].innerText;//for string we use inner Text
+         cart = cardtxt.toLowerCase();
         //  console.log(cardtxt);
          //Jodi Cardtxt Incudes kre input Value tahole block kre daw
-         if(cardtxt.includes(inputval)){
+         if(cart.includes(inputval)){
              element.style.display = "block";
          }
          else{
