@@ -7,8 +7,8 @@ showNotes();
 let addBtn = document.getElementById("addBtn");
 addBtn.addEventListener('click', function (e) {
 
-    let addTxt = document.getElementById("addTxt").value;
-    let addTit = document.getElementById("addTit").value;
+    let addTxt = document.getElementById("addTxt");
+    let addTit = document.getElementById("addTit");
     let notes = localStorage.getItem("notes");
     if (notes == null) {
         //jodi kono kisu na Tahke null array
@@ -20,16 +20,20 @@ addBtn.addEventListener('click', function (e) {
         notesObj = JSON.parse(notes);
         
     }
+    let myObj = {
+        title: addTit.value,
+        text: addTxt.value
+      }
     //notes a push kre dibo add txt r value
-    notesObj.push([addTxt, addTit]);
+    notesObj.push(myObj);
 
     //then Update LocalStroage Stringyfy kre string convert krbe notes array k.
     localStorage.setItem("notes", JSON.stringify(notesObj));
 
     //Then TextArea Vanish hoia Jabe
-    addTxt  = "";
-    addTit = "";
-    // console.log(notesObj);
+    addTxt.value = "";
+    addTit.value = "";
+    console.log(notesObj);
 
     showNotes();
 
@@ -59,8 +63,8 @@ function showNotes() {
     <div class="noteCard my-2 mx-2 card" style="width: 18rem;">
             
     <div class="card-body">
-      <h5 class="card-title">Title:  ${element[1]}</h5>
-      <p class="card-text"> ${element[0]}</p>
+      <h5 class="card-title">Title:  ${element.title}</h5>
+      <p class="card-text"> ${element.text}</p>
       <button id="${index}" onclick="deleteNote(${index})" class="btn btn-primary">Delete</button> 
     </div>
   </div>
